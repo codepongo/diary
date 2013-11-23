@@ -1,0 +1,115 @@
+$def with(entities, idx, prev,next,t='')
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="zuohaitao" />
+<link rel="alternate" type="application/rss+xml" title="CodePongo Diary RSS Feed" href="http://note.codepongo.com/rss">
+<title>CodePongo - where is IP</title>
+<style>
+.entity {
+border: 1px solid #eeeeee;
+padding: 10px;
+margin-bottom: 30px;
+background:#FFF;
+}
+.entity img {
+width:619px;
+}
+.title {
+text-align:right;
+border-bottom: 1px dotted #d9d9d9;
+padding:10px;
+font-weight: bold;
+}
+.content {
+}
+.container {
+width: 640px;
+margin: auto;
+}
+body {
+font-family: "Trebuchet MS",Verdana, Helvetica, Arial, sans-serif;
+font-size: 10pt;
+background:#EBEAEA;
+padding:0;
+margin:0;
+}
+
+a:hover {
+color: #fff;
+text-decoration: none;
+background: #37a;
+}
+
+#nav {
+margin: 0;
+padding: 10px;
+background:#000;
+border: 1px solid #eeeeee;
+}
+#nav a {
+color: #d5d5d5;
+text-decoration: none;
+font-weight: bold;
+}
+#page {
+position: relative;
+padding-top: 10px;
+height:1em;
+margin: auto;
+background:#FFF;
+border-top:1px solid #CCCCCC;
+}
+a {
+color:#000;
+text-decoration: none;
+
+}
+#page #prev {
+float:left;
+font-weight: bold;
+padding: 0 10px 0 10px;
+}
+#page #next {
+float:right;
+font-weight: bold;
+color:#000;
+padding: 0 10px 0 10px;
+}
+#foot {
+margin: 0;
+padding: 10px;
+background:#FFF;
+border: 1px solid #eeeeee;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div id="nav">
+<a href="http://codepongo.com/blog">主页</a>
+<a href="http://codepongo.com/blog/application/">应用</a>
+<a href="http://codepongo.com/dairy">日记</a>
+<a href="http://news.codepongo.com" target="_blank">新闻</a>
+<a href="/aboutme">关于我</a>
+</div>
+$for e in entities:
+	<div class="entity">
+	<div class="title">$e['date']</div>
+	<div class="content">$:e['content']</div>
+<div id="page">
+$if prev:
+    <div id="prev"><a href="/$t$(idx-1)">&lt;&lt;&lt;</a></div>
+$if next:
+    <div id="next"><a href="/$t$(idx+1)">&gt;&gt;&gt;</a></div>
+</div>
+</div>
+</div>
+<div id="foot">
+<div class="container">
+<b>(cc) BY-NC-SA</b><br/>Powered by <a href="">zjDiary</a><br/>Proudly NOT powered by WordPress or Jekyll
+</div>
+</div>
+</body>
+</html>

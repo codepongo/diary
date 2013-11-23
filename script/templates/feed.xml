@@ -1,0 +1,21 @@
+$def with(entities, date,domain)
+<!--?xml version="1.0"?-->
+<rss version="2.0">
+<channel>
+<title>CodePongo Dairy RSS Feed</title>
+<link>$domain</link>
+<description>codepongo diary</description>
+<language>zh-cn</language>
+<pubdate>$date</pubdate>
+<lastbuilddate>$date</lastbuilddate>
+<generator>$domain/feed</generator>
+$for e in entities:
+	<item>
+	<title>$e['date']</title>
+	<link>$domain/$e['id']</link>
+	<description><!--[CDATA[$:e['content']]]--></description>
+	<pubdate>$e['date']</pubdate>
+	<guid>$domain/$e['id']</guid>
+	</item>
+</channel>
+</rss>
