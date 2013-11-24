@@ -50,7 +50,10 @@ class base:
 
 class static:
     def GET(self, name):
-        web.header('content-type', 'image/%s' % os.path.splitext(name)[1].lower())
+        if name == 'robots.txt':
+            web.header('content-type', 'text/plain')
+        else:
+            web.header('content-type', 'image/%s' % os.path.splitext(name)[1].lower())
         with open(os.path.join(path,name), 'rb') as f:
             content = f.read()
             f.close()
@@ -105,6 +108,7 @@ urls = (
     '/(.*.jpg)', static,
     '/feed', feed,
     '/(page)/(.*)',diary,
+    '/(robots.txt)',static,
     '/(.*)',diary,
 
 )
