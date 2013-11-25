@@ -87,7 +87,7 @@ class diary(base):
                 idx = 1
                 prev = False
             begin = (idx - 1) * perpage
-            return render.diary(base.page(self, begin), idx, prev, next, 'page')
+            return render.diary(base.page(self, begin), idx, prev, next, '/page/')
         else:
             try:
                 idx = int(t)

@@ -1,4 +1,4 @@
-$def with(entities, idx, prev,next,t='')
+$def with(entities, idx, prev,next,t='/')
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,9 +100,9 @@ $for e in entities:
 	<div class="content">$:e['content']</div>
 <div id="page">
 $if prev:
-    <div id="prev"><a href="/$t$(idx-1)">&lt;&lt;&lt;</a></div>
+    <div id="prev"><a href="$t$(idx-1)">&lt;&lt;&lt;</a></div>
 $if next:
-    <div id="next"><a href="/$t$(idx+1)">&gt;&gt;&gt;</a></div>
+    <div id="next"><a href="$t$(idx+1)">&gt;&gt;&gt;</a></div>
 </div>
 </div>
 </div>
