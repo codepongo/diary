@@ -30,7 +30,7 @@ class base:
                 self.entities.append(os.path.join(path,p))
         self.entities.sort(reverse=True)
     def entity(self, idx):
-        return self.generate(idx, idx+1)
+        return self.generate(idx-1, idx)
     def page(self, begin=0):
         end = min(begin+perpage,len(self.entities))
         return self.generate(begin, end)
@@ -70,6 +70,7 @@ class feed(base):
 class diary(base):
     def GET(self, t='page', idx=1):
         count = len(self.entities)
+        print count
         templates = os.path.join(os.path.dirname(__file__), 'templates')
         render = web.template.render(templates)
         prev = True
@@ -96,14 +97,15 @@ class diary(base):
             if idx <= 1:
                 idx = 1
                 prev = False
-            if idx >= count-1:
-                idx = count-1
+            if idx >= count:
+                idx = count
                 next = False
             return render.diary(base.entity(self, idx), idx, prev, next)
 
 
 
 urls = (
+    '/',diary,
     '/(.*.JPEG)', static,
     '/(.*.jpg)', static,
     '/feed', feed,
