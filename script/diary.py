@@ -107,6 +107,7 @@ class diary(base):
 urls = (
     '/',diary,
     '/(.*.JPEG)', static,
+    '/(.*.jpeg)', static,
     '/(.*.jpg)', static,
     '/feed', feed,
     '/(page)/(.*)',diary,
