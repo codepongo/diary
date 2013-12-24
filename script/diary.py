@@ -81,6 +81,8 @@ class diary(base):
             except:
                 idx = 1
             pagecount = count / perpage
+            if count % perpage != 0:
+                pagecount += 1
             if idx >= pagecount:
                 idx = pagecount
                 next = False
