@@ -70,7 +70,6 @@ class feed(base):
 class diary(base):
     def GET(self, t='page', idx=1):
         count = len(self.entities)
-        print count
         templates = os.path.join(os.path.dirname(__file__), 'templates')
         render = web.template.render(templates)
         prev = True
@@ -111,6 +110,7 @@ urls = (
     '/(.*.JPEG)', static,
     '/(.*.jpeg)', static,
     '/(.*.jpg)', static,
+    '/(.*.bmp)', static,
     '/feed', feed,
     '/(page)/(.*)',diary,
     '/(robots.txt)',static,
