@@ -39,3 +39,4 @@ nosetests.xml
 script/conf.py
 web
 *.swp
+.DS_Store
