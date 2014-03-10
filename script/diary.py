@@ -51,6 +51,7 @@ class base:
 
 class static:
     def GET(self, name, arguments=''):
+        return name+arguments
         if name == 'robots.txt':
             web.header('content-type', 'text/plain')
         elif os.path.splitext(name)[1] == '.mp3':
@@ -64,6 +65,7 @@ class static:
         return content
 class player:
     def GET(self, name):
+        print name
         if name[:3] == '.js':
             web.header('content-type', 'text/plain')
         else:
