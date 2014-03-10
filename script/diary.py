@@ -14,6 +14,7 @@ try:
     domain = conf.domain
 except:
     path = './md'
+    player_path = './player'
     web.config.debug=True
     domain ='http://127.0.0.1:8080'
 
@@ -49,15 +50,29 @@ class base:
         return es
 
 class static:
-    def GET(self, name):
+    def GET(self, name, arguments=''):
         if name == 'robots.txt':
             web.header('content-type', 'text/plain')
+        elif os.path.splitext(name)[1] == '.mp3':
+            web.header('content-type', 'audio/mp3')
+            web.header('content-length', os.path.getsize(os.path.join(path,name)))
         else:
             web.header('content-type', 'image/%s' % os.path.splitext(name)[1].lower())
         with open(os.path.join(path,name), 'rb') as f:
             content = f.read()
             f.close()
         return content
+class player:
+    def GET(self, name):
+        if name[:3] == '.js':
+            web.header('content-type', 'text/plain')
+        else:
+            web.header('content-type', 'application/x-shockwave-flash')
+        with open(os.path.join(player_path,name), 'rb') as f:
+            content = f.read()
+            f.close()
+        return content
+
 
 class feed(base):
     def GET(self):
@@ -107,6 +122,8 @@ class diary(base):
 
 urls = (
     '/',diary,
+    '/player/(.*)', player,
+    '/(.*.mp3)(.*)', static,
     '/(.*.JPEG)', static,
     '/(.*.jpeg)', static,
     '/(.*.jpg)', static,
