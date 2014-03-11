@@ -10,6 +10,7 @@ perpage = 5
 try:
     import conf
     path = conf.path
+    player_path = conf.player_path 
     web.config.debug=conf.debug
     domain = conf.domain
 except:
