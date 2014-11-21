@@ -9,3 +9,8 @@
 
 
 ## 荣誉 ##
+
+
+[ ]silence is golden
+[ ]filial respect
+[ ]communication for half an hour
