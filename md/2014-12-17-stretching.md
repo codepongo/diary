@@ -18,6 +18,9 @@
 ![胸部拉伸](chest.png)
 
 
+![腰部拉伸](waist.png)
+
+
 ![大腿拉伸](bend.png)
 
 
