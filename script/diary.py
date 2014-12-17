@@ -128,6 +128,7 @@ urls = (
     '/(.*.JPEG)', static,
     '/(.*.jpeg)', static,
     '/(.*.jpg)', static,
+    '/(.*.png)', static,
     '/(.*.bmp)', static,
     '/feed', feed,
     '/(page)/(.*)',diary,
