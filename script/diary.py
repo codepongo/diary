@@ -10,8 +10,8 @@ perpage = 5
 try:
     import conf
     path = conf.path
-    css_path = conf.path
-    js_path = conf.path
+    css_path = conf.css_path
+    js_path = conf.js_path
     player_path = conf.player_path 
     web.config.debug=conf.debug
     domain = conf.domain
