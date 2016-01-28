@@ -51,14 +51,21 @@ class base:
 
 class static:
     def GET(self, name, arguments=''):
+        folder = path
         if name == 'robots.txt':
             web.header('content-type', 'text/plain')
+        elif os.path.splitext(name)[1] == '.css':
+            folder = 'css'
+            web.header('content-type', 'text/css')
+        elif os.path.splitext(name)[1] == '.js':
+            folder = 'js'
+            web.header('content-type', 'text/javascript')
         elif os.path.splitext(name)[1] == '.mp3':
             web.header('content-type', 'audio/mp3')
             web.header('content-length', os.path.getsize(os.path.join(path,name)))
         else:
             web.header('content-type', 'image/%s' % os.path.splitext(name)[1].lower())
-        with open(os.path.join(path,name), 'rb') as f:
+        with open(os.path.join(folder,name), 'rb') as f:
             content = f.read()
         return content
 
@@ -145,6 +152,8 @@ urls = (
     '/(.*.jpg)', static,
     '/(.*.png)', static,
     '/(.*.bmp)', static,
+    '/(.*.css)', static,
+    '/(.*.js)', static,
     '/feed', feed,
     '/(page)/(.*)',diary,
     '/(robots.txt)',static,

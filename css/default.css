@@ -1,0 +1,83 @@
+.entity {
+border: 1px solid #eeeeee;
+padding: 10px;
+margin-bottom: 20px;
+background:#FFF;
+}
+.title {
+text-align:right;
+padding:10px;
+font-weight: bold;
+}
+.title_date, .date {
+text-align:right;
+border-bottom: 1px dotted #d9d9d9;
+padding:10px;
+font-weight: bold;
+}
+.content {
+}
+.container {
+width: 640px;
+margin: auto;
+}
+body {
+font-family: "Trebuchet MS",Verdana, Helvetica, Arial, sans-serif;
+font-size: 10pt;
+background:#EBEAEA;
+padding:0;
+margin:0;
+}
+
+a:hover {
+color: #fff;
+text-decoration: none;
+background: #37a;
+}
+
+#nav {
+margin: 0;
+padding: 10px;
+background:#000;
+border: 1px solid #eeeeee;
+}
+#nav a {
+color: #d5d5d5;
+text-decoration: none;
+font-weight: bold;
+}
+#page {
+position: relative;
+padding-top: 10px;
+height:1em;
+margin: auto;
+margin-bottom: 20px;
+}
+a {
+color:#000;
+text-decoration: none;
+
+}
+#page #prev {
+float:left;
+font-weight: bold;
+padding: 0 10px 0 10px;
+background:#FFF;
+}
+#page #next {
+float:right;
+font-weight: bold;
+color:#000;
+padding: 0 10px 0 10px;
+background:#FFF;
+}
+#foot {
+margin: 0;
+padding: 10px;
+background:#FFF;
+border: 1px solid #eeeeee;
+}
+
+img {
+  max-width:600px;
+}
