@@ -10,11 +10,15 @@ perpage = 5
 try:
     import conf
     path = conf.path
+    css_path = conf.path
+    js_path = conf.path
     player_path = conf.player_path 
     web.config.debug=conf.debug
     domain = conf.domain
 except:
     path = './md'
+    css_path = './css'
+    js_path = './js'
     player_path = './player'
     web.config.debug=True
     domain ='http://127.0.0.1:8080'
@@ -55,10 +59,10 @@ class static:
         if name == 'robots.txt':
             web.header('content-type', 'text/plain')
         elif os.path.splitext(name)[1] == '.css':
-            folder = 'css'
+            folder = css_path
             web.header('content-type', 'text/css')
         elif os.path.splitext(name)[1] == '.js':
-            folder = 'js'
+            folder = js_path
             web.header('content-type', 'text/javascript')
         elif os.path.splitext(name)[1] == '.mp3':
             web.header('content-type', 'audio/mp3')
