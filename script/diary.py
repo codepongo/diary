@@ -47,7 +47,6 @@ class base:
                 c = markdown2.markdown(content).replace('<img src="', '<img src="/')
                 e['content'] = c
                 es.append(e)
-                f.close()
         return es
 
 class static:
@@ -61,8 +60,8 @@ class static:
             web.header('content-type', 'image/%s' % os.path.splitext(name)[1].lower())
         with open(os.path.join(path,name), 'rb') as f:
             content = f.read()
-            f.close()
         return content
+
 class player:
     def GET(self, name):
         if name[:3] == '.js':
@@ -71,7 +70,6 @@ class player:
             web.header('content-type', 'application/x-shockwave-flash')
         with open(os.path.join(player_path,name), 'rb') as f:
             content = f.read()
-            f.close()
         return content
 
 
@@ -82,6 +80,23 @@ class feed(base):
         templates = os.path.join(os.path.dirname(__file__), 'templates')
         render = web.template.render(templates)
         return render.feed(entities=base.page(self), date=date,domain=domain)
+
+class article():
+    def GET(self, name):
+        file_path = os.path.join(path, name) + '.md'
+        if not os.path.isfile(file_path):
+            raise web.seeother('/')
+        e = {}
+        with open(file_path) as f:
+            content = f.read()
+            e['date'] = name[:10]
+            e['title'] = name[11:]
+            c = markdown2.markdown(content).replace('<img src="', '<img src="/')
+            e['content'] = c
+        templates = os.path.join(os.path.dirname(__file__), 'templates')
+        render = web.template.render(templates)
+        return render.article(e)
+
 
 class diary(base):
     def GET(self, t='page', idx=1):
@@ -133,6 +148,7 @@ urls = (
     '/feed', feed,
     '/(page)/(.*)',diary,
     '/(robots.txt)',static,
+    '/article/(.*)',article,
     '/(.*)',diary,
 
 )
