@@ -159,6 +159,7 @@ urls = (
     '/(.*.css)', static,
     '/(.*.js)', static,
     '/feed', feed,
+    '/rss', feed,
     '/(page)/(.*)',diary,
     '/(robots.txt)',static,
     '/article/(.*)',article,

@@ -12,7 +12,7 @@ $def with(entities, date,domain)
 $for e in entities:
 	<item>
 	<title>$e['date']</title>
-	<link>$domain/$e['id']</link>
+	<link>$domain/$e['title'][:10]</link>
 	<description><!--[CDATA[$:e['content']]]--></description>
 	<pubdate>$e['date']</pubdate>
 	<guid>$domain/$e['id']</guid>
