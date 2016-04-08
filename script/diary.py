@@ -67,6 +67,8 @@ class static:
         elif os.path.splitext(name)[1] == '.mp3':
             web.header('content-type', 'audio/mp3')
             web.header('content-length', os.path.getsize(os.path.join(path,name)))
+        elif os.path.splitext(name)[1][1:] == 'jpg':
+            web.header('content-type', 'image/jpeg')
         else:
             web.header('content-type', 'image/%s' % os.path.splitext(name)[1].lower())
         with open(os.path.join(folder,name), 'rb') as f:
