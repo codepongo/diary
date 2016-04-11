@@ -11,11 +11,11 @@ $def with(entities, date,domain)
 <generator>$domain/feed</generator>
 $for e in entities:
 	<item>
-	<title>$e['date']</title>
-	<link>$domain/$e['title'][:10]</link>
+	<title>$e['date'][:10]</title>
+	<link>$domain/article/$e['date']</link>
 	<description><!--[CDATA[$:e['content']]]--></description>
-	<pubdate>$e['date']</pubdate>
-	<guid>$domain/$e['id']</guid>
+	<pubdate>$e['date'][:10]</pubdate>
+	<guid>$e['date']</guid>
 	</item>
 </channel>
 </rss>
