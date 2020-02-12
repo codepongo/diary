@@ -7,6 +7,7 @@ import shutil
 import web
 import markdown2
 perpage = 5
+import edit
 try:
     import conf
     path = conf.path
@@ -151,6 +152,8 @@ class diary(base):
 
 urls = (
     '/',diary,
+    #'/notepad/login', notepad.authentication,
+    #'/notepad/md', notepad.edit
     '/player/(.*)', player,
     '/(.*.mp3)(.*)', static,
     '/(.*.JPEG)', static,
@@ -160,6 +163,7 @@ urls = (
     '/(.*.bmp)', static,
     '/(.*.css)', static,
     '/(.*.js)', static,
+    '/(.*.pdf)', static,
     '/feed', feed,
     '/rss', feed,
     '/(page)/(.*)',diary,

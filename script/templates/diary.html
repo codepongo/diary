@@ -21,7 +21,7 @@ $def with(entities, idx, prev,next,t='/')
 </div>
 $for e in entities:
 	<div class="entity">
-	<div class="title_date">$e['date']</div>
+		<div class="title_date"><a href="/$:e['date']">$e['date']</a></div>
 	<div class="content">$:e['content']</div>
 	</div>
 <div id="page">
