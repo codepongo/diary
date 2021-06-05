@@ -7,7 +7,6 @@ import shutil
 import web
 import markdown2
 perpage = 5
-import edit
 try:
     import conf
     path = conf.path
